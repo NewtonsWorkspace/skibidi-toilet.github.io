@@ -1,1 +1,34 @@
-<h1>WHATS UP SKIBIDI TOILET?</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter Website</title>
+</head>
+<body>
+  <h1>Counter: <span id="counter">0</span></h1>
+  <button onclick="incrementCounter()">Click me!</button>
+
+  <script>
+    // Function to increment counter and save to localStorage
+    function incrementCounter() {
+      if (typeof(Storage) !== "undefined") {
+        let currentCount = localStorage.getItem("counter");
+        currentCount = currentCount ? parseInt(currentCount) + 1 : 1;
+        localStorage.setItem("counter", currentCount);
+        document.getElementById("counter").innerText = currentCount;
+      } else {
+        alert("Sorry, your browser does not support Web Storage...");
+      }
+    }
+
+    // Initialize counter on page load
+    window.onload = function() {
+      let storedCount = localStorage.getItem("counter");
+      if (storedCount) {
+        document.getElementById("counter").innerText = storedCount;
+      }
+    }
+  </script>
+</body>
+</html>
